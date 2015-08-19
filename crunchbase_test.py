@@ -35,7 +35,7 @@ def get_uuid():
 				uuid=item["uuid"]
 				series_qualifier(uuid,csv_row)
 		page += 1
-		if page > 37:
+		if page > total_no_pages:
 			has_next_page = False
 		
 			#get_info(x,name,website,linkedin,country)
