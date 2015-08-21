@@ -12,7 +12,7 @@ records_scanned =1
 def get_uuid():	
 	print "Accessing the organisations"
 	has_next_page = True;
-	page = 1
+	page = 75
 	while(has_next_page):
 		url = "https://api.crunchbase.com/v/3/organizations?page=%s&user_key=419d2896eaa2ef4a93bff62ae0af51e8"%page
 		url_data = urllib2.urlopen(url)
@@ -60,9 +60,10 @@ def series_qualifier(uuid,csv_row):
 							series_values = properties["series"]
 							if series_values in ["C", "D", "E"]:
 								break;
-							if series_values == "B":
+							if series_values in ["A", "B"]:
 								print "series qualified record found!"
 								get_info(uuid,csv_row)
+								break;
 	except urllib2.HTTPError:
 		'''with open('error.txt', 'a') as filehandle:
 			filehandle=str(filehandle)
